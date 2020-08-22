@@ -1,1 +1,3 @@
-# wheres-walter
+Unit 1 Project
+
+Where's Walter?
