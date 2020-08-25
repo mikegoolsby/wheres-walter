@@ -7,7 +7,7 @@ $.ajax({
 
 const $seasonList = $('#season');
 
-$seasonList.options[0] = new Option('--Select--', '');
+$seasonList.Option[0] = new Option('--Select--', '');
 $seasonList.options[1] = new Option('Season 1', 'Season 1');
 $seasonList.options[2] = new Option('Season 2', 'Season 2');
 $seasonList.options[3] = new Option('Season 3', 'Season 3');
