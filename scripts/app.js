@@ -1,15 +1,24 @@
-$.ajax({
-    url: "https://www.breakingbadapi.com/api/characters?name=Walter+White",
-    success: (data) => {
-        console.log(data)
-    }
+const promise = $.ajax({
+    url: "https://www.breakingbadapi.com/api/episodes?series=Breaking+Bad",
 });
 
-const $seasonList = $('#season');
+const $seasonOne = $('#season-one') // not sure what i'm gonna do here
 
-$seasonList.Option[0] = new Option('--Select--', '');
-$seasonList.options[1] = new Option('Season 1', 'Season 1');
-$seasonList.options[2] = new Option('Season 2', 'Season 2');
-$seasonList.options[3] = new Option('Season 3', 'Season 3');
-$seasonList.options[4] = new Option('Season 4', 'Season 4');
-$seasonList.options[5] = new Option('Season 5', 'Season 5');
+$('#season-btn').on('click', (event) => {
+    event.preventDefault();
+    let seasonValueInit = $('#season').val(); // grabs value of season at button submit
+    let seasonValue = seasonValueInit.charAt(seasonValueInit.length - 1); // isolates the number in the string
+    console.log(seasonValue) // debugger 
+    promise.then (
+        (data) => {
+            console.log(data)
+            for (let i=0; i < data.length; i++)
+            console.log(data[i].season, data[i].title); // need to figure out how to hard-stop episode return based on above button submit
+        },
+        () => {
+            console.log('bad request');
+        }
+    )
+});
+
+
