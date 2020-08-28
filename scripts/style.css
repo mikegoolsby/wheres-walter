@@ -1,4 +1,43 @@
+body {
+    background-color: seagreen;
+}
+
+h1 {
+    font-family: 'Bungee Shade', cursive;
+}
+
 #episode {
     width: auto;
 }
 
+#season-btn {
+    border-radius: 6px;
+    background-color: white;
+    border-color: black; 
+}
+
+#season-btn:hover {
+    background-color: seagreen;
+    color: white;
+    border-color: black;
+    border-radius: 6px;
+}
+
+#episode-btn {
+    border-radius: 6px;
+    background-color: white;
+    border-color: black; 
+}
+
+#episode-btn:hover {
+    background-color: seagreen;
+    color: white;
+    border-color: black;
+    border-radius: 6px;
+}
+
+.character-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
