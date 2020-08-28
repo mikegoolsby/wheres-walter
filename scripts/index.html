@@ -14,7 +14,7 @@
 </head>
 <body>
     <h1>Where's Walter?</h1>
-    <h2>Choose a season to view a list of episodes in that season. Next, click an episode and hit "Go" to view the list of characters that appear in that episode.</h2>
+    <h2>Choose a season to view a list of episodes in that season. Next, click an episode and hit "Go" to view the list of characters that appear in that episode. Click on the character to view their photo*.</h2>
     <form>
         <h4>Season</h4>
         <select id="season" name="season">
@@ -33,13 +33,18 @@
         </select>
         <button type="submit" id="episode-btn">Go</button>
     </form>
-    <div id="img-location">
-
-    </div>
     <div id="characters">
         <h4>Characters</h4>
         <ul class="character-list">
         </ul>
     </div>
+    <div id="img-location">
+        <!-- need to manually add these two images, api issues noted in browser console -->
+        <img src="https://upload.wikimedia.org/wikipedia/en/c/c6/Jesse_Pinkman_S5B.png" id="Jesse Pinkman" class="hide"> 
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/db/Hank_Schrader_S5B.png" id="Hank Schrader" class="hide">
+        <img src="https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101032/112815935-stock-vector-no-image-available-icon-flat-vector-illustration.jpg?ver=6" id="not-available" class="hide">
+    </div>
+    <br>
+    <p>*some photos may not be available</p>
 </body>
 </html>

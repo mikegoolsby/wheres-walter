@@ -22,9 +22,7 @@ $.when(promise1, promise2).done(function() {
                     let titles = data[i].title
                     if (seasons === seasonValue) {
                         $('#episode').append(new Option(titles, titles));
-                    } else {
-                        console.log('cache for non matches')
-                    }
+                    } 
                 }
                 //listener that brings in specific episodes, then iterates over those episodes to pull in the characters based off of the chosen episode
                 $('#episode-btn').on('click', (event) => {
@@ -34,17 +32,29 @@ $.when(promise1, promise2).done(function() {
                     $('.character-list').empty();
                     const $episodeSelection = $('#episode').val();
                     for (let j=0; j<data.length; j++) {
-                        let characters = data[j].characters // appends to DOM weird
+                        let characters = data[j].characters
                         characters.forEach(character => {
                             let titleForChar = data[j].title
                             if ($episodeSelection === titleForChar) {
                                 $li = $('<li>').text(character)
                                 $li.attr('id', character);
                                 let charId = $li.attr('id')
+                                $li.on('click', (event) => {
+                                    const img = $('img')
+                                    let image;
+                                    img.each(function(index) {
+                                        const curr = $(this)
+                                        if (curr.attr('id') === character) {
+                                            image = curr;
+                                        } else {
+                                            curr.addClass('hide');
+                                        }
+                                    })
+                                    image.removeClass('hide');
+                                    // console.log(image);
+                                })
                                 console.log(charId)
-                                $('.character-list').append($li);
-                            } else {
-                                console.log('ignore')
+                                $('.character-list').hide().append($li).fadeIn(300);
                             }
                         });
                         // console.log(characters)
@@ -52,7 +62,7 @@ $.when(promise1, promise2).done(function() {
                     }
                     promise2.then (
                         (data) => {
-                            console.log(data)
+                            // console.log(data)
                             for (let y=0; y<data.length; y++) {
                                 let characters = data[y].name
                                 let imageUrl = data[y].img
@@ -73,22 +83,5 @@ $.when(promise1, promise2).done(function() {
                 console.log('bad request');
             }
         )
-
-    });
-    $('body').on('click', "li", function (event) { // listener that listens for the specific character being clicked
-        event.preventDefault();
-        $liText =  $(this).text();
-        images = $('#img-location').children('img')
-        if ($liText) {
-            let imageId = $.each(images, function () {  //allows you to now access all img ids
-                return $('img').attr('id')
-            });
-            console.log(imageId, $liText) // debugging - shows li clicked next to all img id's
-            if ($liText == imageId) {
-                $('img').attr($liText).removeClass('hide') // this should display the image but i find it impossible to access the css properties of the images. 
-                // displayImage();
-            }
-        }
     });
 });
-

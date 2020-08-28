@@ -23,6 +23,19 @@ li {
     font-family: 'Roboto Mono', monospace;
 }
 
+p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: smaller;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+form {
+    width: 300px;
+}
+
 #episode {
     width: auto;
 }
@@ -63,3 +76,30 @@ li {
     display: none;
 }
 
+#characters {
+    width: 300px;
+    float: left;
+}
+
+#img-location {
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    height: 500px;
+}
+
+img {
+    max-height: 400px;
+    max-width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 992px) {
+    #img-location {
+        display: block;
+        text-align: center;
+        padding-top: 331px;
+        height: 500;
+    }
+  }
