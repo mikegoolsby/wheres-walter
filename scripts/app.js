@@ -7,7 +7,7 @@ const promise2 = $.ajax({
 })
 
 $.when(promise1, promise2).done(function() {
-    $('#season-btn').on('click', (event) => {
+    $('#season-btn').on('click', (event) => { // listener that lets user choose the season
         event.preventDefault();
         $('.character-list').empty();
         $('#episode').empty();
@@ -16,7 +16,7 @@ $.when(promise1, promise2).done(function() {
         // console.log(seasonValue) // debugger 
         promise1.then (
             (data) => {
-                // console.log(data) // shows all objects
+                // console.log(data) // shows all objects, use for debugging
                 for (let i=0; i < data.length; i++) {
                     let seasons = data[i].season
                     let titles = data[i].title
@@ -26,6 +26,7 @@ $.when(promise1, promise2).done(function() {
                         console.log('cache for non matches')
                     }
                 }
+                //listener that brings in specific episodes, then iterates over those episodes to pull in the characters based off of the chosen episode
                 $('#episode-btn').on('click', (event) => {
                     event.preventDefault();
                     $('#eps-char').empty();
@@ -39,6 +40,8 @@ $.when(promise1, promise2).done(function() {
                             if ($episodeSelection === titleForChar) {
                                 $li = $('<li>').text(character)
                                 $li.attr('id', character);
+                                let charId = $li.attr('id')
+                                console.log(charId)
                                 $('.character-list').append($li);
                             } else {
                                 console.log('ignore')
@@ -47,18 +50,6 @@ $.when(promise1, promise2).done(function() {
                         // console.log(characters)
                         // console.log(characters, epNumber)
                     }
-
-                    // Essentially, i need to find a way top iterate over the list of characters
-                    // then compare that list of characters' id's to the img id's that are hidden
-                    // if they match, the css can change to show. if not, stay hidden
-                    //// THIS IS WHERE THE IMG CAROUSEL COMES IN
-                    const $charId = $('.character-list').children(); // this is good
-                    console.log($charId)
-                    // const $imgId = $('#img-location').children().attr('id');
-                    // console.log($imgId)
-                    // if ($imgId === $charId) {
-                    //     $('img').css('display', 'block');
-                    // }
                     promise2.then (
                         (data) => {
                             console.log(data)
@@ -68,6 +59,8 @@ $.when(promise1, promise2).done(function() {
                                 $img = $('<img>').attr('src', "")
                                 $img.attr('src', imageUrl);
                                 $img.attr('id', characters);
+                                let imgId = $img.attr('id')
+                                // console.log(imgId)
                                 $img.css('display', 'none');
                                 $('#img-location').append($img);
                             }
@@ -80,6 +73,22 @@ $.when(promise1, promise2).done(function() {
             }
         )
 
+    });
+    $('body').on('click', "li", function (event) { // listener that listens for the specific character being clicked
+        event.preventDefault();
+        $liText =  $(this).text();
+        const displayImage = () => {
+          $('img').attr($liText).css('display', 'block'); // this should display the image but i find it impossible to access the css properties of the images. 
+        }
+        images = $('#img-location').children('img')
+        if ($liText) {
+            for (let i=0; i<images.length; i++) {
+                let imageId = images.attr('id')
+                if ($liText === imageId) {
+                    displayImage();
+                } 
+            }
+        }
     });
 });
 
