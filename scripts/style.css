@@ -4,6 +4,23 @@ body {
 
 h1 {
     font-family: 'Bungee Shade', cursive;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h2, h4 {
+    font-family: 'Indie Flower', cursive;
+}
+
+h4 {
+    font-size: larger;
+}
+
+li {
+    font-family: 'Roboto Mono', monospace;
 }
 
 #episode {
@@ -41,3 +58,4 @@ h1 {
     margin: 0;
     padding: 0;
 }
+
