@@ -15,3 +15,5 @@ A couple of huge challenges:
     -Running two, simultaneous AJAX calls where the second would call only if the first was successful. The character's images were only accessible via a different call. I was able to solve this one via two promise variables
     <br>
     -Accessing the image ID's in an iterable loop and then matching them to the clicked ID of the li of the character name. Sounds easy, but jQuery objects make this a lot harder. I was able to finally accomplish it via an .each loop, then comparing the strings captured. 
+
+Live site link: https://wheres-walter.vercel.app/
