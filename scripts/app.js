@@ -41,12 +41,24 @@ $.when(promise1, promise2).done(function() {
                                 $li.attr('id', character);
                                 $('.character-list').append($li);
                             } else {
-                                console.log('cache for non matches')
+                                console.log('ignore')
                             }
                         });
-                        console.log(characters)
+                        // console.log(characters)
                         // console.log(characters, epNumber)
                     }
+
+                    // Essentially, i need to find a way top iterate over the list of characters
+                    // then compare that list of characters' id's to the img id's that are hidden
+                    // if they match, the css can change to show. if not, stay hidden
+                    //// THIS IS WHERE THE IMG CAROUSEL COMES IN
+                    const $charId = $('.character-list').children(); // this is good
+                    console.log($charId)
+                    // const $imgId = $('#img-location').children().attr('id');
+                    // console.log($imgId)
+                    // if ($imgId === $charId) {
+                    //     $('img').css('display', 'block');
+                    // }
                     promise2.then (
                         (data) => {
                             console.log(data)
@@ -61,17 +73,6 @@ $.when(promise1, promise2).done(function() {
                             }
                         }
                     )
-                    ////// THIS IS WHERE THE IMG CAROUSEL COMES IN
-                    // const testing = $('.character-list').attr('id');
-                    // const testing2 = $('#img-location').attr('id');
-                    // for (let i=0; i<$('img').length; i++) {
-                    //     if (testing == testing2) {
-                    //         $img.css('display', 'block')
-                    //     } else {
-                    //         console.log('refactor');
-                    //     }
-                    // }
-
                 });
             },
             () => {
