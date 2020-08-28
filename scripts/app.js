@@ -59,9 +59,10 @@ $.when(promise1, promise2).done(function() {
                                 $img = $('<img>').attr('src', "")
                                 $img.attr('src', imageUrl);
                                 $img.attr('id', characters);
+                                $img.addClass('hide')
                                 let imgId = $img.attr('id')
                                 // console.log(imgId)
-                                $img.css('display', 'none');
+                                // $img.css('display', 'none');
                                 $('#img-location').append($img);
                             }
                         }
@@ -77,16 +78,15 @@ $.when(promise1, promise2).done(function() {
     $('body').on('click', "li", function (event) { // listener that listens for the specific character being clicked
         event.preventDefault();
         $liText =  $(this).text();
-        const displayImage = () => {
-          $('img').attr($liText).css('display', 'block'); // this should display the image but i find it impossible to access the css properties of the images. 
-        }
         images = $('#img-location').children('img')
         if ($liText) {
-            for (let i=0; i<images.length; i++) {
-                let imageId = images.attr('id')
-                if ($liText === imageId) {
-                    displayImage();
-                } 
+            let imageId = $.each(images, function () {  //allows you to now access all img ids
+                return $('img').attr('id')
+            });
+            console.log(imageId, $liText) // debugging - shows li clicked next to all img id's
+            if ($liText == imageId) {
+                $('img').attr($liText).removeClass('hide') // this should display the image but i find it impossible to access the css properties of the images. 
+                // displayImage();
             }
         }
     });

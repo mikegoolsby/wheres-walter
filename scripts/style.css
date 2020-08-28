@@ -59,3 +59,7 @@ li {
     padding: 0;
 }
 
+.hide {
+    display: none;
+}
+
